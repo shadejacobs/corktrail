@@ -1,8 +1,9 @@
 let map, service;
 export let currentLocation;
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
+async function initMap() {
+  const { Map } = await google.maps.importLibarary("maps");
+  map = new Map(document.getElementById("map"), {
     zoom: 10,
     center: { lat: 37.8393, lng: -84.2700 } 
   });
@@ -42,3 +43,5 @@ function placeMarkers(places) {
   });
   map.fitBounds(bounds);
 }
+
+initMap();

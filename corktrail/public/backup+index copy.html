@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+  <head>
+    <title>Add Map</title>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- prettier-ignore -->
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg", v: "weekly"});</script>
+  </body>
+</html>
+
+  <header><h1>Cork Trail</h1>
+      <nav>
+      <ul>
+        <li><a href="#">Map</a></li>
+        <li><a href="#">Vineyards</a></li>
+        <li><a href="#">Favorites</a></li>
+        <li><a href="#">About</a></li>
+        <li><button id="login-btn">Login</button></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="auth-section">
+    <button id="login-btn">Login</button>
+    <button id="logout-btn" hidden>Logout</button>
+  </section>
+  <section id="search-section">
+    <input id="location-input" placeholder="Enter city or zip"/>
+    <button id="search-btn">Find Vineyards</button>
+  </section>
+  <main>
+    <div id="map"></div>
+    <div id="sidebar">
+      <h2>Vineyard Details</h2>
+      <div id="vineyard-info"></div>
+    </div>
+        <gmp-map
+      center="38.7946,-106.5348"
+      zoom="4"
+      map-id="DEMO_MAP_ID"
+      style="height: 400px"
+    >
+    </gmp-map>
+
+    <!--
+      The `defer` attribute causes the script to execute after the full HTML
+      document has been parsed. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaDutd6dykk7IBTtFBS0fSpJRtx8H_4Sk&libraries=maps"
+      defer
+    ></script>
+  </main>
+</body>
+</html>
+
+
+
+
+"AIzaSyAaDutd6dykk7IBTtFBS0fSpJRtx8H_4Sk",

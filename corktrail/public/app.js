@@ -13,6 +13,13 @@ window.app = {
 };
 
 document.getElementById("search-btn").onclick = () => {
-  const q = document.getElementById("location-input").value;
+  const q = document.getElementById("location-input").value.trim();
+  const validZipOrCity = /^[a-zA-Z\s\d]{2,}$/;
+
+  if (!validZipOrCity.test(q)) {
+    alert("Please enter a valid city or ZIP code.");
+    return;
+  }
+
   findVineyards(q);
 };
