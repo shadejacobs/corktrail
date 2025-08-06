@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Add Map</title>
+    <title>Cork Trail</title>
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
@@ -16,7 +16,7 @@
     </nav>
   </header>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3>Cork Map </h3>
     <!--The div element for the map -->
     <div id="map"></div>
 
@@ -30,3 +30,41 @@
   
 
 
+<script src="js/wine-api.js"></script>
+<script>
+  // Example usage — you could later connect this to a form or UI event
+  fetchWineData("haut brion", 1995);
+</script>
+
+<form id="wineForm">
+  <input type="text" id="winename" placeholder="Wine Name" required />
+  <input type="number" id="vintage" placeholder="Vintage (Optional)" />
+  <button type="submit">Search</button>
+</form>
+
+<div id="wineResult"></div>
+
+<script>
+  document.getElementById("wineForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const winename = document.getElementById("winename").value;
+    const vintage = document.getElementById("vintage").value;
+    const wineData = await fetchWineData(winename, vintage);
+
+    const resultDiv = document.getElementById("wineResult");
+    if (wineData) {
+      resultDiv.innerHTML = `
+        <p><strong>Name:</strong> ${winename}</p>
+        <p><strong>Vintage:</strong> ${vintage}</p>
+        <p><strong>Avg Price:</strong> ${wineData["price-average"]} USD</p>
+        <p><strong>Min Price:</strong> ${wineData["price-min"]} USD</p>
+        <p><strong>Max Price:</strong> ${wineData["price-max"]} USD</p>
+        <p><strong>Region:</strong> ${wineData.region}</p>
+        <p><strong>Grape:</strong> ${wineData.grape}</p>
+        <p><strong>Score:</strong> ${wineData.score}</p>
+      `;
+    } else {
+      resultDiv.textContent = "No wine data found.";
+    }
+  });
+</script>
